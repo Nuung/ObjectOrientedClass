@@ -3,20 +3,25 @@ package 객체지향설계_예제.BaseGUI;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 public class BaseGUI extends JFrame{
 
+	private final int WIDTH = 512, HEIGHT = 512;
+	
 	public BaseGUI() {
 		new MenuSet(this);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("GUI test");
 		this.setBackground(Color.WHITE);
+		
 		this.add(new JTextArea());
 		// below this line, we can make any componets 
 		
