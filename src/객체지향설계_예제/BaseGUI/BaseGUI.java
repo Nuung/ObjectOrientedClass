@@ -8,6 +8,7 @@ import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JTextArea;
 
 public class BaseGUI extends JFrame{
 
@@ -16,7 +17,7 @@ public class BaseGUI extends JFrame{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("GUI test");
 		this.setBackground(Color.WHITE);
-		
+		this.add(new JTextArea());
 		// below this line, we can make any componets 
 		
 //		this.setLayout(new FlowLayout()); // 기본적으로 Frame은 플로우레이아웃을 사용한다 (디폴드 값)
