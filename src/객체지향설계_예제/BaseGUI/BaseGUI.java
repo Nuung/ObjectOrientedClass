@@ -15,6 +15,7 @@ import javax.swing.JTextArea;
 public class BaseGUI extends JFrame{
 
 	private final int WIDTH = 512, HEIGHT = 512;
+	private JTextArea mainTextArea;
 	
 	public BaseGUI() {
 		new MenuSet(this);
@@ -22,7 +23,7 @@ public class BaseGUI extends JFrame{
 		this.setTitle("GUI test");
 		this.setBackground(Color.WHITE);
 		
-		this.add(new JTextArea());
+		this.add(mainTextArea = new JTextArea());
 		// below this line, we can make any componets 
 		
 //		this.setLayout(new FlowLayout()); // 기본적으로 Frame은 플로우레이아웃을 사용한다 (디폴드 값)
@@ -42,6 +43,10 @@ public class BaseGUI extends JFrame{
 		
 		this.setSize(512, 512);
 		setVisible(true);
+	}
+	
+	public JTextArea getTextArea() {
+		return this.mainTextArea;
 	}
 	
 }
