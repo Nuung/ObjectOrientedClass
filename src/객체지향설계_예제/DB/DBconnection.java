@@ -19,7 +19,8 @@ public class DBconnection {
 		
 		// DB 커넥션 예외 처리 try - catch
 		try {
-			Class.forName("com.mysql.jdbc.Driver"); // library의 Dirver Class참조
+			// cj 6 이상 버전 -> error meg 안뜨게
+			Class.forName("com.mysql.cj.jdbc.Driver"); // library의 Dirver Class참조
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/javadb?characterEncoding=UTF-8&serverTimezone=UTC", 
 					dbConfigue.getdbName(), dbConfigue.getdbPass());
 			st = con.createStatement();
