@@ -15,8 +15,10 @@ public class testMain {
 		
 		// for swing GUI
 		new BaseGUI();
+		
+		// for db Setting
 		DBconnection dbcon = new DBconnection();
-		ResultSet resultAll = dbcon.getRecodeAll();
+		ResultSet resultAll = dbcon.getRecodeAll(); // SELECT ALL!
 		
 		try {
 			do { // next하면 포인트가 다음을 다르킨다 생각하자
