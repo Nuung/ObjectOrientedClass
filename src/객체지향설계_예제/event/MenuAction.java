@@ -19,8 +19,9 @@ import 객체지향설계_예제.BaseGUI.BaseGUI;
 public class MenuAction implements ActionListener {
 
 	private BaseGUI mainFrame;
-	private File openedFile;
+	private File openedFile; // 바로 저장을 위해
 	
+	// Action 생성자!
 	public MenuAction(BaseGUI mainFrame) {
 		this.mainFrame = mainFrame;
 	}

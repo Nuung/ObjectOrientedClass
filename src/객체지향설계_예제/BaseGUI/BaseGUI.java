@@ -10,8 +10,10 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+@SuppressWarnings("serial")
 public class BaseGUI extends JFrame{
 
 	private final int WIDTH = 512, HEIGHT = 512;
@@ -23,7 +25,9 @@ public class BaseGUI extends JFrame{
 		this.setTitle("GUI test");
 		this.setBackground(Color.WHITE);
 		
-		this.add(mainTextArea = new JTextArea());
+		mainTextArea = new JTextArea();
+		JScrollPane scrollP = new JScrollPane(mainTextArea);
+		this.add(scrollP);
 		// below this line, we can make any componets 
 		
 //		this.setLayout(new FlowLayout()); // 기본적으로 Frame은 플로우레이아웃을 사용한다 (디폴드 값)
@@ -41,7 +45,7 @@ public class BaseGUI extends JFrame{
 		
 		// ──────────── end
 		
-		this.setSize(512, 512);
+		this.setSize(WIDTH, HEIGHT);
 		setVisible(true);
 	}
 	
