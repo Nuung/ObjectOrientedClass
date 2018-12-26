@@ -32,14 +32,14 @@ public class MenuAction implements ActionListener {
 		
 		// getting btn text value
 		Object source =  e.getSource();
-        String butSrcTxt = ((AbstractButton) source).getText();
+        	String butSrcTxt = ((AbstractButton) source).getText();
 		
-        // ----------------------------------------------File events----------------------------------------------- //
-        if(butSrcTxt == "새로만들기") {
-        	this.mainFrame.dispose();
-        	new BaseGUI().getTextArea().setText("");
-        	return;
-        } // if 새로만들기
+		// ----------------------------------------------File events----------------------------------------------- //
+		if(butSrcTxt == "새로만들기") {
+			this.mainFrame.dispose();
+			new BaseGUI().getTextArea().setText("");
+			return;
+		} // if 새로만들기
         
 		if(butSrcTxt == "열기") {
 			JFileChooser choosed = new JFileChooser();
