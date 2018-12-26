@@ -1,21 +1,24 @@
 package 객체지향설계_예제.BaseGUI;
 
-import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import 객체지향설계_예제.event.MenuAction;
+
 public class MenuSet {
 
+	private BaseGUI mainFrame;
 	private JMenuBar mb;
 	private JMenu fileMenu;
 	private JMenuItem jitem;
 	
-	public MenuSet(JFrame frame) {
+	public MenuSet(BaseGUI frame) {
+		this.mainFrame = frame;
 		mb = new JMenuBar();
 		this.mb = createMenu();
 		
-		frame.setJMenuBar(this.mb);
+		mainFrame.setJMenuBar(this.mb);
 	}
 	
 	private JMenuBar createMenu() {
@@ -32,6 +35,7 @@ public class MenuSet {
 		fileMenu.add(jitem);
 		jitem = new JMenuItem("끝내기");
 		fileMenu.add(jitem);
+		eventInit(fileMenu);
 		mb.add(fileMenu);
 
 		// '보기' 메뉴
@@ -42,15 +46,27 @@ public class MenuSet {
 		fileMenu.add(jitem);
 		jitem = new JMenuItem("크게");
 		fileMenu.add(jitem);
+		eventInit(fileMenu);
 		mb.add(fileMenu);
 		
 		// '도움말' 메뉴
 		fileMenu = new JMenu("도움말");
 		jitem = new JMenuItem("프로그램정보");
 		fileMenu.add(jitem);
+		eventInit(fileMenu);
 		mb.add(fileMenu);
 		
 		return mb;
 	}
+	
+	private void eventInit(JMenu menu) {
+		MenuAction menuAction = new MenuAction(this.mainFrame);
+		int menuLen = menu.getItemCount();
+		
+		for(int i = 0; i < menuLen; i++) {
+			menu.getItem(i).addActionListener(menuAction);
+		} // for
+		
+	} // eventInit
 	
 }
