@@ -76,6 +76,7 @@ public class MenuAction implements ActionListener {
 		} // if 열기
 		
 		if(butSrcTxt == "저장") {
+			
 			// 이미 '열기'를 통해서 파일을 열어서 opened File이 존재하는 경우
 			if(this.openedFile != null) {
 				String str = mainFrame.getTextArea().getText().trim();
@@ -120,6 +121,7 @@ public class MenuAction implements ActionListener {
 			    
 			} // if - else
 			return;
+			
 		} // if 저장
 		
 		if(butSrcTxt == "열기") {
