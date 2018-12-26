@@ -7,7 +7,7 @@ import 객체지향설계_예제.file.MemoJang;
 
 public class testMain {
 	
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		
 		// for swing GUI
 		new BaseGUI();

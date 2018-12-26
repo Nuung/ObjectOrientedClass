@@ -12,6 +12,7 @@ import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import 객체지향설계_예제.BaseGUI.BaseGUI;
@@ -49,23 +50,26 @@ public class MenuAction implements ActionListener {
 		    int returnVal = choosed.showOpenDialog(this.mainFrame);
 		    if(returnVal == JFileChooser.APPROVE_OPTION) {
 		       System.out.println("You chose to open this file: " + choosed.getSelectedFile().getName());
-				try {
-					File f = choosed.getSelectedFile();
-					this.openedFile = f; // 바로 저장을 위한 opened File object
+		       // Frame title을 파일 제목으로 변경
+		       this.mainFrame.setTitle(choosed.getSelectedFile().getName());
+		       
+		       try {
+		    	   File f = choosed.getSelectedFile();
+		    	   this.openedFile = f; // 바로 저장을 위한 opened File object
+		    	   
+		    	   FileReader fis = new FileReader(f); 
+		    	   int i = 0; 
+		    	   mainFrame.getTextArea().setText("");
 					
-					FileReader fis = new FileReader(f); 
-					int i = 0; 
-					mainFrame.getTextArea().setText("");
-					
-					// Read all Char untill the end
-					while((i = fis.read()) != -1) {
-						// Read and append to TextArea that char
-						mainFrame.getTextArea().append(String.valueOf((char)i));
-					} // while
-					fis.close();
-				} catch(Exception error) {
-					System.out.println(error);
-				} // try ~ catch
+		    	   // Read all Char untill the end
+		    	   while((i = fis.read()) != -1) {
+		    		   // Read and append to TextArea that char
+		    		   mainFrame.getTextArea().append(String.valueOf((char)i));
+		    	   } // while
+		    	   fis.close();
+		       } catch(Exception error) {
+		    	   System.out.println(error);
+		       } // try ~ catch
 				
 		    } // inner if
 		    return;
@@ -108,7 +112,12 @@ public class MenuAction implements ActionListener {
 					} catch(Exception error) {
 						System.out.println(error);
 					} // try ~ catch
+					
 			    } // inner if
+			    
+			    // Frame title을 파일 제목으로 변경
+			    this.mainFrame.setTitle(choosed.getSelectedFile().getName());
+			    
 			} // if - else
 			return;
 		} // if 저장
@@ -184,19 +193,27 @@ public class MenuAction implements ActionListener {
 		} // if 끝내기
 		
 		// ----------------------------------------------text size events----------------------------------------------- //
+		String originFnt = this.mainFrame.getTextArea().getFont().getFontName();
+		
 		if(butSrcTxt == "작게") {
-			Font fnt = new Font("arial", 1, 10);
+			Font fnt = new Font(originFnt, 0, 10);
 			this.mainFrame.getTextArea().setFont(fnt);
 		} // if 끝내기
 		
 		if(butSrcTxt == "보통") {
-			Font fnt = new Font("arial", 1, 12);
+			Font fnt = new Font(originFnt, 0, 12);
 			this.mainFrame.getTextArea().setFont(fnt);
 		} // if 끝내기
 		
 		if(butSrcTxt == "크게") {
-			Font fnt = new Font("arial", 1, 14);
+			Font fnt = new Font(originFnt, 0, 15);
 			this.mainFrame.getTextArea().setFont(fnt);
+		} // if 끝내기
+		
+		// ----------------------------------------------ETC events----------------------------------------------- //
+
+		if(butSrcTxt == "프로그램정보") {
+			JOptionPane.showMessageDialog(this.mainFrame, "Made by Nuung -- 14011005 컴공 정현우", "Message", JOptionPane.DEFAULT_OPTION);
 		} // if 끝내기
 		
 	} // actionPerformed()
