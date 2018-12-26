@@ -21,8 +21,9 @@ public class EventRegist {
 		String email = scanner.next();
 		
 		this.dbcon.connectDB();
-		this.dbcon.registUser(uname, email);
-		this.dbcon.printList();
+		this.dbcon.registUser(uname, email); // 이름과 이메일 INSERT INTO
+		System.out.println("## 등록자 명단");
+		this.dbcon.printList(); // SELECT * FROM evnet -> reading all
 		this.dbcon.closeDB();
 
 	}

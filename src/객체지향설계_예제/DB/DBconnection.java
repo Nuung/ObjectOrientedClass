@@ -77,7 +77,6 @@ public class DBconnection {
 	public void printList(){
 		
 		this.rs = this.getRecodeAll();
-		System.out.println("## 등록자 명단");
 		try {
 			while(rs.next()) {
 				String result_uname = rs.getString("uname");
