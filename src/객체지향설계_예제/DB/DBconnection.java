@@ -42,6 +42,7 @@ public class DBconnection {
 		return rs;
 	}
 	
+	{
 	/* searching DB에서 testing
 	// SQL, 실행 기본 구조
 	public boolean isAdmin(String gooname) {
@@ -117,5 +118,6 @@ public class DBconnection {
 		return rs;
 	}
 	*/
+	}
 	
 } // DBConnection Class
