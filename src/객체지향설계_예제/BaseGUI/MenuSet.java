@@ -17,7 +17,6 @@ public class MenuSet {
 		this.mainFrame = frame;
 		mb = new JMenuBar();
 		this.mb = createMenu();
-		
 		mainFrame.setJMenuBar(this.mb);
 	}
 	
@@ -59,6 +58,7 @@ public class MenuSet {
 		return mb;
 	}
 	
+	// 각 메뉴에다 적절하게 이벤트 떄려박기
 	private void eventInit(JMenu menu) {
 		MenuAction menuAction = new MenuAction(this.mainFrame);
 		int menuLen = menu.getItemCount();
