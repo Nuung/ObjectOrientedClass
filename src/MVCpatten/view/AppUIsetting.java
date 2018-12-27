@@ -36,7 +36,7 @@ public class AppUIsetting {
 	
 	private void initAllUI() {
 		this.mainFrame.setLayout(new BorderLayout()); // 수평 및 수직 간격이 10으로 설정되는 것 -> Border.North .. etc를 사용
-		this.setLabel();
+		this.ml = new JLabel("##메시지 : 시작 되었습니다.");
 		this.mainFrame.add(ml, BorderLayout.PAGE_START);
 		this.setPanel();
 		this.mainFrame.add(p1, BorderLayout.LINE_START);
@@ -81,13 +81,14 @@ public class AppUIsetting {
 	
 	private void setTextScroll() {
 		this.textArea = new JTextArea();
-		this.textArea.setText("관리번호\t상품평\t단가\t제조사");
+		this.textArea.setText("관리번호\t상품명\t단가\t제조사");
 		this.scrollP = new JScrollPane(this.textArea);
 		this.scrollP.setPreferredSize(new Dimension(400, 50));
 	}
 	
-	private void setLabel() {
-		this.ml = new JLabel("메시지출력부");
+	// 상단 '상태바'의 Text 값 설정
+	public void setLabel(String innerText) {
+		this.ml.setText(innerText);
 	}
 	
 	public void setCombo(Vector<String> items) {

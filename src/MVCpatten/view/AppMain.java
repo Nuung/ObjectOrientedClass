@@ -3,6 +3,7 @@ package MVCpatten.view;
 import java.awt.Color;
 import java.util.ArrayList;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -52,8 +53,11 @@ public class AppMain extends JFrame {
 	} // AppBtnEvent
 	
 	// 화면 로딩 및 리로딩 이벤트 처리 메서드
+	@SuppressWarnings("unchecked")
 	public void refreshData() {
-		this.appUIset.setCombo(this.productDAO.getItems());
+		this.appUIset.getTextArea().setText("관리번호\t상품명\t단가\t제조사\n");
+		this.appUIset.getComboBox().setModel(new DefaultComboBoxModel<String>(this.productDAO.getItems()));
+		this.clearField();
 	}
 	
 	// 입력 양식 초기화 메서드
