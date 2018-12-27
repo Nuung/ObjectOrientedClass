@@ -78,34 +78,114 @@ public class ProductDAO {
 
 				// adding to list
 				datas.add(p);
-				items.add(String.valueOf(rs.getInt("prcode")));				
+				items.add(String.valueOf(rs.getInt("prcode"))); // 콤보박스에 prcode내용 다 삽입				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} // try - catch
 		
+		// DB에서 가져온 모든 Product 형식이 object 가지고 있는 ArrayList datas 리턴
 		return datas;
 	} // getAll()
 	
+	// prcode -> comboBox에 넣어져 있고, 그에 해당하는 Product 가져오기
 	Product getProduct(int prcode) {
-		return null;
-	}
+		this.SQL = "SELECT * FROM `product` WHERE `prcode` = ?";
+		Product p = null;
+		
+		try{
+			pstmt = conn.prepareStatement(this.SQL);
+			pstmt.setInt(1, prcode);
+			this.rs = pstmt.executeQuery();
+			// prcode는 Primary Key (기본키) -> 즉 유일함 -> first 값만 조지면 됨
+			rs.next();
+			p = new Product();
+			p.setPrcode(rs.getInt("prcode"));
+			p.setPrname(rs.getString("prname"));
+			p.setPrice(rs.getInt("price"));
+			p.setManufacture(rs.getString("manufacture"));
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} // try - catch
+		
+		// 정상적으로 SQL 검색후 결과가 존재하면, Product object를 정상적으로 리턴
+		if(p != null) {
+			return p;
+		} else {
+			System.out.print("SQL error OR DB error");
+			return null;
+		} // if - else
+	} // getProduct()
 	
+	// product 삽입하기
 	boolean newProduct(Product product) {
-		return true;
-	}
+		this.SQL = "INSERT INTO `product` VALUES(?, ?, ?, ?)";
+		
+		try{
+			this.pstmt = conn.prepareStatement(this.SQL);
+			pstmt.setInt(1, product.getPrcode());
+			pstmt.setString(2, product.getPrname());
+			pstmt.setInt(3, product.getPrice());
+			pstmt.setString(4, product.getManufacture());
+			int resultIN = pstmt.executeUpdate();
+			
+			// 1 = 성공, 0 = 실패
+			if (resultIN == 1) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} // try - catch
+		return false;
+	} // newProduct()
 	
+	// product 삭제하기
 	boolean delProduct(int prcode) {
-		return true;
+		this.SQL = "DELETE FROM `product` WHERE `prcode` = ?";
+		try{
+			this.pstmt = conn.prepareStatement(this.SQL);
+			pstmt.setInt(1, prcode);
+			int resultDel = pstmt.executeUpdate();
+			// 1 = 성공, 0 = 실패
+			if (resultDel == 1) {
+				return true;
+			} else {
+				return false;
+			} // if - else
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} // try - catch
+		return false;
 	}
 	
+	// product 수정하기
 	boolean updateProduct(Product product) {
-		return true;
+		this.SQL = "UPDATE `product` SET `prname`=? `price`=? `manfacture`=? WHERE `prcode` = ?";
+		try{
+			this.pstmt = conn.prepareStatement(this.SQL);
+			pstmt.setString(1, product.getPrname());
+			pstmt.setInt(2, product.getPrice());
+			pstmt.setString(3, product.getManufacture());
+			pstmt.setInt(4, product.getPrice());
+			int resultUpdate = pstmt.executeUpdate();
+			
+			// 1 = 성공, 0 = 실패
+			if (resultUpdate == 1) {
+				return true;
+			} else {
+				return false;
+			} // if - else
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} // try - catch
+		return false;
 	}
 	
 	Vector<String> getItems(){
-		return null;
+		return this.items;
 	}
 
 }
