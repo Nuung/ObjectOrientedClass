@@ -39,7 +39,7 @@ public class DBconnection {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} // try - catch
 	}
 	
 	public ResultSet getRecodeAll() {
@@ -47,14 +47,14 @@ public class DBconnection {
 		try {
 			String SQL = "SELECT * FROM `event`"; // ORDER BY `score` DESC"
 			rs = st.executeQuery(SQL); // rs가 SQL 구문의 결과 행 값들을 가지게 된다.
-			if(rs.next()) { // SQL구문의 결과값이 존재한다면
+			if(rs != null) { // SQL구문의 결과값이 존재한다면
 				return rs;
 			} // if
 		} catch(Exception e) {
 			System.out.println(" DB searching error (in SQL 구문) : " + e.getMessage());
 		} // try - catch
 		
-		return rs;
+		return null;
 	} // getRecodeAll()
 	
 	public void registUser(String uname, String email){
@@ -77,6 +77,8 @@ public class DBconnection {
 	public void printList(){
 		
 		this.rs = this.getRecodeAll();
+		if(rs == null) { System.out.println("This Table is Empty!"); }
+		
 		try {
 			while(rs.next()) {
 				String result_uname = rs.getString("uname");
