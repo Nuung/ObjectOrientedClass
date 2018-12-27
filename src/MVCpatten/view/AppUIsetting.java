@@ -2,6 +2,7 @@ package MVCpatten.view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -16,13 +17,17 @@ public class AppUIsetting {
 	private AppMain mainFrame; // 메인 프레임
 	private JLabel ml; // 메세지 출력부
 	private JPanel p1, p2, p3; // 라벨, 입력양식, 버튼 메뉴부
+	
 	// p2에 속하는 '입력양식' 선택 콤보박스 - 생성후, refreshData 메서드를 충해서 Data (item 값을 통해) 채운다
-	private JComboBox cb = new JComboBox(); 
+	private JComboBox cb;
+	private Vector<String> items;
+	
 	private JTextArea textArea; // 전체 목록 출력부
 	private JScrollPane scrollP; // 전체 목록 출력부의 Scroll 세팅을 위하여
 	
-	public AppUIsetting(AppMain mainFrame) {
+	public AppUIsetting(AppMain mainFrame, Vector<String> items) {
 		this.mainFrame = mainFrame;
+		this.items = items;
 		this.initAllUI();
 	}
 	
@@ -55,6 +60,7 @@ public class AppUIsetting {
 		
 		// p2 는 콤보박스와 3개의 텍스트 필드
 		this.p2 = new JPanel();
+		cb = new JComboBox(items);
 		p2.add(this.cb);
 		for(int i = 0; i < 3; i++) {
 			JTextField jTtemp = new JTextField(25);
@@ -62,6 +68,7 @@ public class AppUIsetting {
 		}
 		this.p2.setPreferredSize(new Dimension(40, 50));
 
+		// p3 는 3개의 등록, 조회 삭제 버튼
 		this.p3 = new JPanel();
 		JButton jBtntemp = new JButton("등록");
 		p3.add(jBtntemp);
@@ -82,8 +89,20 @@ public class AppUIsetting {
 	}
 	
 	// ---------------- Getter And Setter Setting ---------------- //
-	public JPanel getbtnPanel() {
-		return this.p3;
+	public JPanel getbtnPanel(int input) {
+		if(input == 1) {
+			return p1;
+		}
+		else if(input == 2) {
+			return p2;
+		}
+		else {
+			return p3;
+		}
+	}
+	
+	public JTextArea getTextArea() {
+		return this.textArea;
 	}
 	
 }

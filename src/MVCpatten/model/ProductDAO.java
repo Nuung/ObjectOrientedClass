@@ -24,20 +24,12 @@ public class ProductDAO {
 	Vector<String> items = null;
 	String SQL;
 	
-	// 생성자
-	public ProductDAO() {
-		try {
-			pstmt = conn.prepareStatement("INSERT INTO `product` VALUES(?, ?, ?, ?)");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} // try - catch
-	}
-	
 	void connectDB() {
 		
 		try {
 			Class.forName(dbconfig.getJdbcDriver());
 			conn = DriverManager.getConnection(dbconfig.getJdbcUrl(), dbconfig.getdbName(), dbconfig.getdbPass());
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} // try - catch
@@ -56,7 +48,7 @@ public class ProductDAO {
 		
 	} // closeDB()
 	
-	ArrayList<Product> getAll(){
+	public ArrayList<Product> getAll(){
 		this.connectDB();
 		this.SQL = "SELECT * FROM product"; // 모든 레코드 가져오기
 		
@@ -69,6 +61,10 @@ public class ProductDAO {
 		
 		// reading All elements untill the end
 		try {
+			// DB에 질의 던지기 (ALL)
+			pstmt = conn.prepareStatement(this.SQL);
+			rs = pstmt.executeQuery();
+			
 			while(rs.next()) {
 				Product p = new Product();
 				p.setPrcode(rs.getInt("prcode"));
@@ -79,12 +75,13 @@ public class ProductDAO {
 				// adding to list
 				datas.add(p);
 				items.add(String.valueOf(rs.getInt("prcode"))); // 콤보박스에 prcode내용 다 삽입				
-			}
+			} // while
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} // try - catch
 		
+		this.closeDB();		
 		// DB에서 가져온 모든 Product 형식이 object 가지고 있는 ArrayList datas 리턴
 		return datas;
 	} // getAll()
@@ -111,9 +108,11 @@ public class ProductDAO {
 		
 		// 정상적으로 SQL 검색후 결과가 존재하면, Product object를 정상적으로 리턴
 		if(p != null) {
+			this.closeDB();
 			return p;
 		} else {
 			System.out.print("SQL error OR DB error");
+			this.closeDB();
 			return null;
 		} // if - else
 	} // getProduct()
@@ -132,13 +131,16 @@ public class ProductDAO {
 			
 			// 1 = 성공, 0 = 실패
 			if (resultIN == 1) {
+				this.closeDB();
 				return true;
 			} else {
+				this.closeDB();
 				return false;
 			}
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} // try - catch
+		this.closeDB();
 		return false;
 	} // newProduct()
 	
@@ -151,13 +153,16 @@ public class ProductDAO {
 			int resultDel = pstmt.executeUpdate();
 			// 1 = 성공, 0 = 실패
 			if (resultDel == 1) {
+				this.closeDB();
 				return true;
 			} else {
+				this.closeDB();
 				return false;
 			} // if - else
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} // try - catch
+		this.closeDB();
 		return false;
 	}
 	
@@ -174,17 +179,20 @@ public class ProductDAO {
 			
 			// 1 = 성공, 0 = 실패
 			if (resultUpdate == 1) {
+				this.closeDB();
 				return true;
 			} else {
+				this.closeDB();
 				return false;
 			} // if - else
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} // try - catch
+		this.closeDB();
 		return false;
 	}
 	
-	Vector<String> getItems(){
+	public Vector<String> getItems(){
 		return this.items;
 	}
 
