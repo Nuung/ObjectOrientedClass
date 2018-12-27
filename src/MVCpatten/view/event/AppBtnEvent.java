@@ -50,9 +50,8 @@ public class AppBtnEvent implements ActionListener {
 			p.setManufacture(tempManu.getText());
 			
 			System.out.println(this.productDAO.newProduct(p));
+			this.appMain.refreshData();
 			this.actionInquiry();
-//			this.appMain.refreshData();
-			this.appMain.clearField();
 		} // if
 		
 		// 조회 버튼 액션
@@ -67,6 +66,7 @@ public class AppBtnEvent implements ActionListener {
 			if(result == JOptionPane.YES_OPTION) {
 				System.out.print(this.productDAO.delProduct(findPrcode));
 				this.appUIset.getComboBox().setSelectedItem("전체");
+				this.appMain.refreshData();
 				this.actionInquiry();
 			} // inner 'yes' if
 		} // if
@@ -74,10 +74,10 @@ public class AppBtnEvent implements ActionListener {
 	} // actionPerformed()
 	
 	private void actionInquiry() {
-		this.appUIset.getTextArea().setText("관리번호\t상품평\t단가\t제조사\n");
 		
 		if((String) this.appUIset.getComboBox().getSelectedItem() == "전체") {
 			// gettig All recode
+			this.appMain.refreshData();
 			this.firstAllProduct = productDAO.getAll();
 			
 			for(int i = 0; i < this.firstAllProduct.size(); i++) {
@@ -86,10 +86,11 @@ public class AppBtnEvent implements ActionListener {
 				String tempPrice = String.valueOf(this.firstAllProduct.get(i).getPrice());
 				String tempManu = this.firstAllProduct.get(i).getManufacture();
 				this.appUIset.getTextArea().append(tempPrcode+"\t"+tempPrname+"\t"+tempPrice+"\t"+tempManu+"\n");
-				this.appMain.clearField();
 			} // for
 		} // if
 		else {
+			this.appMain.clearField();
+			this.appUIset.getTextArea().setText("관리번호\t상품평\t단가\t제조사\n");
 			int findPrcode = Integer.parseInt((String) this.appUIset.getComboBox().getSelectedItem());
 			Product Ptemp = this.productDAO.getProduct(findPrcode);
 
