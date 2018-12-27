@@ -87,7 +87,8 @@ public class ProductDAO {
 	} // getAll()
 	
 	// prcode -> comboBox에 넣어져 있고, 그에 해당하는 Product 가져오기
-	Product getProduct(int prcode) {
+	public Product getProduct(int prcode) {
+		this.connectDB();
 		this.SQL = "SELECT * FROM `product` WHERE `prcode` = ?";
 		Product p = null;
 		
@@ -118,15 +119,15 @@ public class ProductDAO {
 	} // getProduct()
 	
 	// product 삽입하기
-	boolean newProduct(Product product) {
-		this.SQL = "INSERT INTO `product` VALUES(?, ?, ?, ?)";
+	public boolean newProduct(Product product) {
+		this.connectDB();
+		this.SQL = "INSERT INTO product VALUES(null, ?, ?, ?)";
 		
 		try{
 			this.pstmt = conn.prepareStatement(this.SQL);
-			pstmt.setInt(1, product.getPrcode());
-			pstmt.setString(2, product.getPrname());
-			pstmt.setInt(3, product.getPrice());
-			pstmt.setString(4, product.getManufacture());
+			pstmt.setString(1, product.getPrname());
+			pstmt.setInt(2, product.getPrice());
+			pstmt.setString(3, product.getManufacture());			
 			int resultIN = pstmt.executeUpdate();
 			
 			// 1 = 성공, 0 = 실패
@@ -145,7 +146,8 @@ public class ProductDAO {
 	} // newProduct()
 	
 	// product 삭제하기
-	boolean delProduct(int prcode) {
+	public boolean delProduct(int prcode) {
+		this.connectDB();
 		this.SQL = "DELETE FROM `product` WHERE `prcode` = ?";
 		try{
 			this.pstmt = conn.prepareStatement(this.SQL);
@@ -167,7 +169,8 @@ public class ProductDAO {
 	}
 	
 	// product 수정하기
-	boolean updateProduct(Product product) {
+	public boolean updateProduct(Product product) {
+		this.connectDB();
 		this.SQL = "UPDATE `product` SET `prname`=? `price`=? `manfacture`=? WHERE `prcode` = ?";
 		try{
 			this.pstmt = conn.prepareStatement(this.SQL);

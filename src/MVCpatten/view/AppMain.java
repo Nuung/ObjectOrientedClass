@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import MVCpatten.model.Product;
 import MVCpatten.model.ProductDAO;
@@ -42,7 +43,7 @@ public class AppMain extends JFrame {
 	
 	// 각 메뉴에다 적절하게 이벤트 떄려박기
 	private void AppBtnEvent() {
-		AppBtnEvent btnAction = new AppBtnEvent(this.appUIset, this.firstAllProduct);
+		AppBtnEvent btnAction = new AppBtnEvent(this);
 		int btnCounter = this.appUIset.getbtnPanel(3).getComponentCount();
 		for(int i = 0; i < btnCounter; i++) {
 			JButton jbtnTemp = (JButton) this.appUIset.getbtnPanel(3).getComponent(i);
@@ -51,13 +52,24 @@ public class AppMain extends JFrame {
 	} // AppBtnEvent
 	
 	// 화면 로딩 및 리로딩 이벤트 처리 메서드
-	private void refreshData() {
-		
+	public void refreshData() {
+		this.appUIset.setCombo(this.productDAO.getItems());
 	}
 	
 	// 입력 양식 초기화 메서드
-	private void clearField() {
-		
+	public void clearField() {
+		JPanel tempP = this.appUIset.getbtnPanel(2);
+		((JTextField) tempP.getComponent(1)).setText("");
+		((JTextField) tempP.getComponent(2)).setText("");
+		((JTextField) tempP.getComponent(3)).setText("");
+	}
+
+	public AppUIsetting getAppUIset() {
+		return this.appUIset;
+	}
+
+	public ProductDAO getProductDAO() {
+		return this.productDAO;
 	}
 	
 }

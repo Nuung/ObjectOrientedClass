@@ -2,6 +2,7 @@ package MVCpatten.view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -48,6 +49,7 @@ public class AppUIsetting {
 	private void setPanel() {
 		// p1 은 4개의 Label
 		this.p1 = new JPanel();
+		this.p1.setLayout(new GridLayout(4, 1, 5, 5)); // 생성자로써 ( 행, 열, 수평간격, 수직간격 ) 의 형태로 바툭판 레이아웃이라 생각하자
 		JLabel jLtemp = new JLabel("관리번호");
 		p1.add(jLtemp);
 		jLtemp = new JLabel("상품명");
@@ -56,17 +58,16 @@ public class AppUIsetting {
 		p1.add(jLtemp);
 		jLtemp = new JLabel("제조사");
 		p1.add(jLtemp);
-		this.p1.setPreferredSize(new Dimension(60, 500));
 		
 		// p2 는 콤보박스와 3개의 텍스트 필드
 		this.p2 = new JPanel();
-		cb = new JComboBox(items);
+		this.setCombo(this.items);
 		p2.add(this.cb);
 		for(int i = 0; i < 3; i++) {
-			JTextField jTtemp = new JTextField(25);
+			JTextField jTtemp = new JTextField();
 			p2.add(jTtemp);
 		}
-		this.p2.setPreferredSize(new Dimension(40, 50));
+		this.p2.setLayout(new GridLayout(4, 1, 5, 5)); // 생성자로써 ( 행, 열, 수평간격, 수직간격 ) 의 형태로 바툭판 레이아웃이라 생각하자
 
 		// p3 는 3개의 등록, 조회 삭제 버튼
 		this.p3 = new JPanel();
@@ -80,12 +81,18 @@ public class AppUIsetting {
 	
 	private void setTextScroll() {
 		this.textArea = new JTextArea();
+		this.textArea.setText("관리번호\t상품평\t단가\t제조사");
 		this.scrollP = new JScrollPane(this.textArea);
 		this.scrollP.setPreferredSize(new Dimension(400, 50));
 	}
 	
 	private void setLabel() {
 		this.ml = new JLabel("메시지출력부");
+	}
+	
+	public void setCombo(Vector<String> items) {
+		this.items = items;
+		this.cb = new JComboBox<String>(this.items);
 	}
 	
 	// ---------------- Getter And Setter Setting ---------------- //
@@ -103,6 +110,10 @@ public class AppUIsetting {
 	
 	public JTextArea getTextArea() {
 		return this.textArea;
+	}
+	
+	public JComboBox getComboBox() {
+		return this.cb;
 	}
 	
 }
