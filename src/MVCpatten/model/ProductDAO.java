@@ -171,13 +171,13 @@ public class ProductDAO {
 	// product 수정하기
 	public boolean updateProduct(Product product) {
 		this.connectDB();
-		this.SQL = "UPDATE `product` SET `prname`=? `price`=? `manfacture`=? WHERE `prcode` = ?";
+		this.SQL = "UPDATE `product` SET `prname`=?, `price`=?, `manufacture`=? WHERE `prcode` = ?";
 		try{
 			this.pstmt = conn.prepareStatement(this.SQL);
 			pstmt.setString(1, product.getPrname());
 			pstmt.setInt(2, product.getPrice());
 			pstmt.setString(3, product.getManufacture());
-			pstmt.setInt(4, product.getPrice());
+			pstmt.setInt(4, product.getPrcode());
 			int resultUpdate = pstmt.executeUpdate();
 			
 			// 1 = 성공, 0 = 실패

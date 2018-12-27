@@ -55,7 +55,7 @@ public class AppMain extends JFrame {
 	// 화면 로딩 및 리로딩 이벤트 처리 메서드
 	@SuppressWarnings("unchecked")
 	public void refreshData() {
-		this.appUIset.getTextArea().setText("관리번호\t상품평\t단가\t제조사\n");
+		this.appUIset.getTextArea().setText("관리번호\t상품명\t단가\t제조사\n");
 		this.appUIset.getComboBox().setModel(new DefaultComboBoxModel<String>(this.productDAO.getItems()));
 		this.clearField();
 	}
