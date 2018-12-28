@@ -52,7 +52,6 @@
 //			// for MemoJang class
 //			new MemoJang();
 //			
-//			LambdaFormula test = new LambdaFormula(0, 0);
 //			*/
 //		}
 //		
