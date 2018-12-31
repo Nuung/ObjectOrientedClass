@@ -36,10 +36,10 @@ public class MultiChatUI extends JFrame implements Runnable {
 	private JPanel msgPanel;
 	// Message input Textfield / OutPut Area
 	protected JTextField msgInput;
-	protected JTextArea msgOut;
+	public JTextArea msgOut;
 	private JScrollPane jsp; // Scroll Bar for Output
 	// Exit button
-	protected JButton exitButton;
+	private JButton exitButton;
 	
 	// LayOut for View Changer
 	protected Container tab;
@@ -81,9 +81,9 @@ public class MultiChatUI extends JFrame implements Runnable {
 		msgPanel = new JPanel();
 		msgPanel.setLayout(new BorderLayout());
 		msgInput = new JTextField();
-		exitButton = new JButton("EXIT");
+		setExitButton(new JButton("EXIT"));
 		msgPanel.add(msgInput, BorderLayout.CENTER);
-		msgPanel.add(exitButton, BorderLayout.EAST);
+		msgPanel.add(getExitButton(), BorderLayout.EAST);
 		
 		// Message Output Panel
 		msgOut = new JTextArea("", 10, 30);
@@ -110,7 +110,7 @@ public class MultiChatUI extends JFrame implements Runnable {
 		// Add action Event
 		this.loginButton.addActionListener(listener);
 		this.logoutButton.addActionListener(listener);
-		this.exitButton.addActionListener(listener);
+		this.getExitButton().addActionListener(listener);
 		this.msgInput.addActionListener(listener);
 	} // addButtonActionListener()
 	
@@ -118,5 +118,119 @@ public class MultiChatUI extends JFrame implements Runnable {
 	public void run() {
 		
 	} // run()
+
+	// ----------------------------------- getter and setter ---------------------------------- //
+	
+	public JButton getExitButton() {
+		return exitButton;
+	}
+
+	public void setExitButton(JButton exitButton) {
+		this.exitButton = exitButton;
+	}
+
+	public JButton getLoginButton() {
+		return loginButton;
+	}
+
+	public JTextField getIdInput() {
+		return idInput;
+	}
+
+	public JButton getLogoutButton() {
+		return logoutButton;
+	}
+
+	public JTextField getMsgInput() {
+		return msgInput;
+	}
+
+	public JTextArea getMsgOut() {
+		return msgOut;
+	}
+
+	public void setLoginPanel(JPanel loginPanel) {
+		this.loginPanel = loginPanel;
+	}
+
+	public void setLoginButton(JButton loginButton) {
+		this.loginButton = loginButton;
+	}
+
+	public void setInLabel(JLabel inLabel) {
+		this.inLabel = inLabel;
+	}
+
+	public void setOutLabel(JLabel outLabel) {
+		this.outLabel = outLabel;
+	}
+
+	public void setIdInput(JTextField idInput) {
+		this.idInput = idInput;
+	}
+
+	public void setLogoutPanel(JPanel logoutPanel) {
+		this.logoutPanel = logoutPanel;
+	}
+
+	public void setLogoutButton(JButton logoutButton) {
+		this.logoutButton = logoutButton;
+	}
+
+	public void setMsgPanel(JPanel msgPanel) {
+		this.msgPanel = msgPanel;
+	}
+
+	public void setMsgInput(JTextField msgInput) {
+		this.msgInput = msgInput;
+	}
+
+	public void setMsgOut(JTextArea msgOut) {
+		this.msgOut = msgOut;
+	}
+
+	public void setJsp(JScrollPane jsp) {
+		this.jsp = jsp;
+	}
+
+	public void setTab(Container tab) {
+		this.tab = tab;
+	}
+
+	public void setCardLayout(CardLayout cardLayout) {
+		this.cardLayout = cardLayout;
+	}
+
+	public JPanel getLoginPanel() {
+		return loginPanel;
+	}
+
+	public JLabel getInLabel() {
+		return inLabel;
+	}
+
+	public JLabel getOutLabel() {
+		return outLabel;
+	}
+
+	public JPanel getLogoutPanel() {
+		return logoutPanel;
+	}
+
+	public JPanel getMsgPanel() {
+		return msgPanel;
+	}
+
+	public JScrollPane getJsp() {
+		return jsp;
+	}
+
+	public Container getTab() {
+		return tab;
+	}
+
+	public CardLayout getCardLayout() {
+		return cardLayout;
+	}
 	
 }

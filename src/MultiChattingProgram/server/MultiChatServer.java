@@ -24,10 +24,6 @@ public class MultiChatServer {
 	// Object for Logger
 	Logger logger;
 	
-	public static void main(String[] args) {
-//		start();
-	}
-	
 	// Start the Server
 	public void start() {
 		logger = Logger.getLogger(this.getClass().getName());
@@ -50,15 +46,11 @@ public class MultiChatServer {
 		} // try -catch
 	} // start()
 	
-	public void msgSendAll(String msg) {
-		
-	}
-	
 	class ChatThread extends Thread {
 		// for recived msg
 		String msg;
 		Message m = new Message();
-		Gson gson = new Gson(); // for JSON parser;
+		public Gson gson = new Gson(); // for JSON parser;
 		private boolean status = true;
 		
 		// In out Stream
@@ -84,13 +76,29 @@ public class MultiChatServer {
 					this.status = false;
 				} // if
 				else if(m.getType().equals("login")) { //수신한 메시지가 LogIn 일때
-					
+					msgSendAll(gson.toJson(new Message(m.getId(), "", "님이 로그인했습니다.", "server")));
 				}
-				
+				else { // 그 밖의 메시지 일때 -> 바로 샌딩
+					msgSendAll(msg);
+				} // if - else
 			} // while
+			
+			// while loop 벗어나면 클라이언트 연결이 종료 --> 스레드 인터럽트
+			this.interrupt();
+			logger.info(this.getName() + " 종료됨!!");
 		} // run()
 		
-		
-	}
+		// 연결된 모든 클라이언트에 메시지 중계
+		void msgSendAll(String msg) {
+			for(ChatThread ct : chatThreads) {
+				ct.outMsg.println(msg);
+			} // for
+		} // msgSendAll
+	} // Inner Class ChatThread
 	
-}
+	public static void main(String[] args) {
+		MultiChatServer server = new MultiChatServer();
+		server.start();
+	} // main
+	
+} // Class MultiChatServer
