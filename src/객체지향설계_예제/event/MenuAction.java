@@ -32,7 +32,7 @@ public class MenuAction implements ActionListener {
 		
 		// getting btn text value
 		Object source =  e.getSource();
-        	String butSrcTxt = ((AbstractButton) source).getText();
+        String butSrcTxt = ((AbstractButton) source).getText();
 		
 		// ----------------------------------------------File events----------------------------------------------- //
 		if(butSrcTxt == "새로만들기") {
