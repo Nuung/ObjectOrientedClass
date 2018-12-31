@@ -25,7 +25,7 @@ public class MultiChatController implements Runnable {
 	private final MultiChatData chatData;
 	
     // 소켓 연결을 위한 변수 선언
-    private String ip = "10.0.0.3";
+    private String ip = "127.0.0.1";
     private Socket socket;
     private BufferedReader inMsg = null;
     private PrintWriter outMsg = null; 
@@ -48,22 +48,23 @@ public class MultiChatController implements Runnable {
 	}
 	
 	private void appMain() {
-		chatData.addObj(v.msgOut); // Adding UI object that dealing with the change of the data
+		this.chatData.addObj(v.msgOut); // Adding UI object that dealing with the change of the data
 		v.addButtonActionListener(new ActionListener() {
 
+			// 리스너 자체에 대한 정의
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 				Object obj = e.getSource();
 				
-				// 종료 버튼 처리
-				if(obj == v.getExitButton()) {
+				// 각 버튼 이벤트 핸들링
+				if(obj == v.getExitButton()) { // 종료 버튼 처리
 					System.exit(0);
 				} else if(obj == v.getLoginButton()) { 	// Login Button Action
 					id = v.getIdInput().getText();
 					v.getOutLabel().setText(" 대화명 : " + id);
 					v.getCardLayout().show(v.getTab(), "logout"); // Change the tab panel
-					connectServer();
+					connectServer(); // connect to the server
 				} else if(obj == v.getLogoutButton()) {	// Logout Button Action
 					outMsg.println(gson.toJson(new Message(id, "", "", "logout")));
 					v.getMsgOut().setText(""); // Clear the 대화창
@@ -81,25 +82,28 @@ public class MultiChatController implements Runnable {
 				} else if(obj == v.getMsgInput()) {
 					// Sending the Message
 					outMsg.println(gson.toJson(new Message(id, "", v.getMsgInput().getText(), "msg")));
+//					chatData.refreshData(v.getMsgInput().getText());
 					v.getMsgInput().setText(""); // Clear the 대화창
 				} // if - else
 			} // actionPerformed()
 		}); // addButtonActionListener
 	} // appMain
 	
-	// 
+	// 서버에 연결하고 액션 처리
 	public void connectServer() {
         try {
             // 소켓 생성
-            socket = new Socket(ip,8888);
+            socket = new Socket(ip, 8888);
             logger.log(Level.INFO,"[Client]Server 연결 성공!!");
 
             // 입출력 스트림 생성
             inMsg = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             outMsg = new PrintWriter(socket.getOutputStream(),true);
+            
             // 서버에 로그인 메시지 전달
-            m = new Message(this.id,"","","login");
+            m = new Message(id,"","","login");
             outMsg.println(gson.toJson(m));
+            
             // 메시지 수신을 위한 스레드 생성
             thread = new Thread(this);
             thread.start();

@@ -2,6 +2,7 @@ package MultiChattingProgram.server;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -24,6 +25,10 @@ public class MultiChatServer {
 	// Object for Logger
 	Logger logger;
 	
+	public MultiChatServer() {
+		
+	}
+	
 	// Start the Server
 	public void start() {
 		logger = Logger.getLogger(this.getClass().getName());
@@ -36,7 +41,7 @@ public class MultiChatServer {
 			// waiting the connection with infinte loop
 			while(true) {
 				s = ss.accept();
-				ChatThread chat = new ChatThread(); 
+				ChatThread chat = new ChatThread(s); 
 				chatThreads.add(chat); // add list that clients
 				chat.start(); // thread start
 			} // while
@@ -46,54 +51,68 @@ public class MultiChatServer {
 		} // try -catch
 	} // start()
 	
+	// 연결된 모든 클라이언트에 메시지 중계
+	void msgSendAll(String msg) {
+		for(ChatThread ct : chatThreads) {
+			ct.outMsg.println(msg);
+		} // for
+	} // msgSendAll
+	
 	class ChatThread extends Thread {
 		// for recived msg
 		String msg;
 		Message m = new Message();
 		public Gson gson = new Gson(); // for JSON parser;
-		private boolean status = true;
 		
+		public Socket s;
 		// In out Stream
 		private BufferedReader inMsg = null;
 		private PrintWriter outMsg = null;
+		public ChatThread(Socket s) {
+			this.s = s;
+		}
 		
 		@Override
 		public void run() {
-			// 상태정보가 true이면 루프를 돌면서 사용자에게서 수신된 메시지 처리
-			while(status) {
-				try {
-					msg = inMsg.readLine(); // 수신된 메시지를 저장 하고
-				} catch (IOException e) {
-					e.printStackTrace();
-				} // try - catch
+			
+			boolean status = true;
+			logger.info("Chat Thread Start ... ");
+			
+			try {
+				this.inMsg = new BufferedReader(new InputStreamReader(s.getInputStream()));
+				this.outMsg = new PrintWriter(s.getOutputStream(), true);
 				
-				m = gson.fromJson(msg, Message.class); // 저장된 메시지를 Json -> 에서 -> Message object로 맵핑
-		
-				if(m.getType().equals("logout")) { //수신한 메시지가 Logout 일때
-					chatThreads.remove(this);
-					msgSendAll(gson.toJson(new Message(m.getId(), "", "님이 종료했습니다.", "server")));
-					// 해당 클라이언트 스레드 종료로 status를 false로 설정
-					this.status = false;
-				} // if
-				else if(m.getType().equals("login")) { //수신한 메시지가 LogIn 일때
-					msgSendAll(gson.toJson(new Message(m.getId(), "", "님이 로그인했습니다.", "server")));
-				}
-				else { // 그 밖의 메시지 일때 -> 바로 샌딩
-					msgSendAll(msg);
-				} // if - else
-			} // while
+				// 상태정보가 true이면 루프를 돌면서 사용자에게서 수신된 메시지 처리
+				while(status) {
+					try {
+						msg = inMsg.readLine(); // 수신된 메시지를 저장 하고
+					} catch (IOException e) {
+						e.printStackTrace();
+					} // try - catch
+					
+					m = gson.fromJson(msg, Message.class); // 저장된 메시지를 Json -> 에서 -> Message object로 맵핑
+			
+					if(m.getType().equals("logout")) { //수신한 메시지가 Logout 일때
+						chatThreads.remove(this);
+						msgSendAll(gson.toJson(new Message(m.getId(), "", "님이 종료했습니다.", "server")));
+						// 해당 클라이언트 스레드 종료로 status를 false로 설정
+						status = false;
+					} // if
+					else if(m.getType().equals("login")) { //수신한 메시지가 LogIn 일때
+						msgSendAll(gson.toJson(new Message(m.getId(), "", "님이 로그인했습니다.", "server")));
+					}
+					else { // 그 밖의 메시지 일때 -> 바로 샌딩
+						msgSendAll(msg);
+					} // if - else
+				} // while
+			}catch (IOException e1) {
+					e1.printStackTrace();
+			} // try - catch
 			
 			// while loop 벗어나면 클라이언트 연결이 종료 --> 스레드 인터럽트
 			this.interrupt();
 			logger.info(this.getName() + " 종료됨!!");
 		} // run()
-		
-		// 연결된 모든 클라이언트에 메시지 중계
-		void msgSendAll(String msg) {
-			for(ChatThread ct : chatThreads) {
-				ct.outMsg.println(msg);
-			} // for
-		} // msgSendAll
 	} // Inner Class ChatThread
 	
 	public static void main(String[] args) {
