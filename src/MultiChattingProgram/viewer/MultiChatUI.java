@@ -13,7 +13,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class MultiChatUI extends JFrame implements Runnable {
+public class MultiChatUI extends JFrame {
 
 	// Login Panel
 	private JPanel loginPanel;
@@ -113,11 +113,6 @@ public class MultiChatUI extends JFrame implements Runnable {
 		this.getExitButton().addActionListener(listener);
 		this.msgInput.addActionListener(listener);
 	} // addButtonActionListener()
-	
-	@Override
-	public void run() {
-		
-	} // run()
 
 	// ----------------------------------- getter and setter ---------------------------------- //
 	
