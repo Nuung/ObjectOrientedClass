@@ -30,7 +30,7 @@ public class Gugudan {
         int input = sc.nextInt();
         System.out.println(input);
 		
-        //3.입력 받은 인트데이터(input)을 키로 guguMap에서  구구단 문자열(guguDanOutput)을 취득하여 콘솔창에 출력
+        //3.입력 받은 인트데이터(input)을 키로 guguMap에서  구구단 문자열(guguDanOutput)을 취득하여 콘솔창 에 출력
         guguDanOutput = guguMap.get(input);
         System.out.println(guguDanOutput);
         
