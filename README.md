@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/Nuung/projectname.svg?branch=master)](https://travis-ci.com/Nuung/ObjectOrientedClass)
+
 # ObjectOrientedClass
 Code for ObjectOrientedClass in winter semester.
 
