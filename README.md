@@ -12,7 +12,6 @@
     <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/수업예제진행사진.png" width="40%" />
 </div>
 
-*** 아래부터 대표 프로젝트 설명 ***
 
 ## Multi Chatting Program
 > 소켓 프로그래밍 + Thread / View / Server / Simple Model / Controller 분화로 가볍게 만든 멀티 채팅 프로그래밍
@@ -22,18 +21,18 @@
 
 ### 시물레이션
 <div align = "center">
-    <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/multiChat_img3.png" width="60%" />
-    <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/multiChat_img4.png" width="60%" />
-    <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/multiChat_img5.png" width="60%" />
-    <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/multiChat_img6.png" width="60%" />
+    <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/multiChat_img3.png" width="70%" />
+    <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/multiChat_img4.png" width="70%" />
+    <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/multiChat_img5.png" width="70%" />
+    <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/multiChat_img6.png" width="70%" />
 </div>
 
 
 ### Project 구조
 <div align = "center">
-    전체 프로젝트 파일 구조 및 형태는 아래와 같습니다. 
-    <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/multiChat_img1.png" width="60%" /></br>
-    Controller 부분
-    <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/multiChat_img2.png" width="60%" />
+    전체 프로젝트 파일 구조 및 형태는 아래와 같습니다. </br>
+    <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/multiChat_img1.png" width="70%" /></br>
+    Controller 부분 </br>
+    <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/multiChat_img2.png" width="70%" /> 
 </div>
 
