@@ -9,7 +9,7 @@
 <a href="https://github.com/Nuung/ObjectOrientedClass/projects/1"> Go To ' TO DO ' </a>
 
 <div align = "center">
-    <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/buildpath.png" width="40%" />
+    <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/buildpath.png" width="60%" /></br>
     <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/수업예제진행사진.png" width="40%" />
 </div>
 
@@ -42,13 +42,13 @@
     <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/multiChat_img2.png" width="70%" /></br>
     Controller Socket 이어주기. </br>
     <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/multiChat_controller_img1.png" width="70%" /></br>
-</div>
+</div></br>
 
 - 프로젝트 디버깅 및 스레드 생성되는 부분 보기
 <div align = "center">
     <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/multiChat_debug1.png" width="70%" /></br>
     <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/multiChat_debug2.png" width="70%" /></br>
-</div>
+</div></br>
 
 
 ### Class 구조 - UML
@@ -56,5 +56,5 @@
 
 <div align = "center">
     전체 프로젝트 파일 구조 및 형태는 아래와 같습니다. </br>
-    <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/multiChat_UML.png" width="70%" /></br>
+    <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/multiChat_UML.png" width="90%" /></br>
 <div>
