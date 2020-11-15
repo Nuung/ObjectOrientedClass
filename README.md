@@ -37,5 +37,3 @@
     <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/multiChat_img2.png" width="60%" />
 </div>
 
-
-
