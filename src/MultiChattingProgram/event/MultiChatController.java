@@ -44,7 +44,24 @@ public class MultiChatController implements Runnable {
 	public MultiChatController(MultiChatData chatData, MultiChatUI v) {
 		this.logger = Logger.getLogger(this.getClass().getName());
 		this.chatData = chatData;
-		this.v = v;
+		this.v = v; // MultiChatUI
+	}
+	
+	private void multiChatLogOut() {
+		this.outMsg.println(gson.toJson(new Message(id, "", "", "logout")));
+		this.v.getMsgOut().setText(""); // Clear the 대화창
+		this.v.getCardLayout().show(v.getTab(), "login"); // Change the tab panel
+		this.outMsg.close();
+		
+		// Logout --> 접속 종료와 메세지 스트림 종료
+		try {
+			this.inMsg.close();
+			this.socket.close();
+		} catch( IOException ex ) {
+			ex.printStackTrace();
+		} // try - catch
+		
+		this.status = false;		
 	}
 	
 	private void appMain() {
@@ -59,6 +76,7 @@ public class MultiChatController implements Runnable {
 				
 				// 각 버튼 이벤트 핸들링
 				if(obj == v.getExitButton()) { // 종료 버튼 처리
+					multiChatLogOut();
 					System.exit(0);
 				} else if(obj == v.getLoginButton()) { 	// Login Button Action
 					id = v.getIdInput().getText();
@@ -66,19 +84,7 @@ public class MultiChatController implements Runnable {
 					v.getCardLayout().show(v.getTab(), "logout"); // Change the tab panel
 					connectServer(); // connect to the server
 				} else if(obj == v.getLogoutButton()) {	// Logout Button Action
-					outMsg.println(gson.toJson(new Message(id, "", "", "logout")));
-					v.getMsgOut().setText(""); // Clear the 대화창
-					v.getCardLayout().show(v.getTab(), "login"); // Change the tab panel
-					outMsg.close();
-					
-					// Logout --> 접속 종료와 메세지 스트림 종료
-					try {
-						inMsg.close();
-						socket.close();
-					} catch( IOException ex ) {
-						ex.printStackTrace();
-					} // try - catch
-					status = false;
+					multiChatLogOut();
 				} else if(obj == v.getMsgInput()) {
 					// Sending the Message
 					outMsg.println(gson.toJson(new Message(id, "", v.getMsgInput().getText(), "msg")));
@@ -86,6 +92,7 @@ public class MultiChatController implements Runnable {
 					v.getMsgInput().setText(""); // Clear the 대화창
 				} // if - else
 			} // actionPerformed()
+
 		}); // addButtonActionListener
 	} // appMain
 	

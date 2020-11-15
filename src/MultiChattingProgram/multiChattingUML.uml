@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="0.0" y="297.0">MultiChattingProgram.server.MultiChatServer</node>
+    <node x="526.5" y="785.0">MultiChattingProgram.event.MultiChatController</node>
+    <node x="223.0" y="275.0">MultiChattingProgram.model.Message</node>
+    <node x="537.0" y="0.0">MultiChattingProgram.viewer.MultiChatUI</node>
+    <node x="63.38888888888886" y="829.0">MultiChattingProgram.server.MultiChatServer.ChatThread</node>
+    <node x="896.0" y="319.5">MultiChattingProgram.model.MultiChatData</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="MultiChattingProgram.event.MultiChatController" target="MultiChattingProgram.model.MultiChatData">
+      <point x="80.0" y="-82.5" />
+      <point x="786.5" y="745.0" />
+      <point x="932.0" y="745.0" />
+      <point x="-72.0" y="38.0" />
+    </edge>
+    <edge source="MultiChattingProgram.event.MultiChatController" target="MultiChattingProgram.viewer.MultiChatUI">
+      <point x="-40.0" y="-82.5" />
+      <point x="666.5" y="735.0" />
+      <point x="593.5" y="735.0" />
+      <point x="-113.0" y="357.5" />
+    </edge>
+    <edge source="MultiChattingProgram.event.MultiChatController" target="MultiChattingProgram.model.Message">
+      <point x="-160.0" y="-82.5" />
+      <point x="546.5" y="765.0" />
+      <point x="394.5" y="765.0" />
+      <point x="24.5" y="82.5" />
+    </edge>
+    <edge source="MultiChattingProgram.server.MultiChatServer" target="MultiChattingProgram.server.MultiChatServer.ChatThread">
+      <point x="16.916666666666686" y="60.5" />
+      <point x="118.41666666666669" y="765.0" />
+      <point x="133.38888888888886" y="765.0" />
+      <point x="-20.0" y="-38.5" />
+    </edge>
+    <edge source="MultiChattingProgram.server.MultiChatServer.ChatThread" target="MultiChattingProgram.model.Message">
+      <point x="40.0" y="-38.5" />
+      <point x="193.38888888888886" y="745.0" />
+      <point x="247.5" y="745.0" />
+      <point x="-122.5" y="82.5" />
+    </edge>
+    <edge source="MultiChattingProgram.server.MultiChatServer.ChatThread" target="MultiChattingProgram.server.MultiChatServer">
+      <point x="-80.0" y="-38.5" />
+      <point x="73.38888888888886" y="765.0" />
+      <point x="16.916666666666686" y="765.0" />
+      <point x="-84.58333333333334" y="60.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.825326556726183" x="472.72190430264953" y="445.13558672601357" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

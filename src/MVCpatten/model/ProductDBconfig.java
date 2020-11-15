@@ -14,7 +14,7 @@ public class ProductDBconfig {
 	// 생성자
 	public ProductDBconfig() {
 		this.dbName = "root";
-		this.dbPass = "45812qlgks!#";
+		this.dbPass = "45812Qlgks!";
 	}
 	
 	// Getter
