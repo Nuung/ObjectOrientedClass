@@ -9,7 +9,7 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import MVCpatten.model.Product;
+import MVCpatten.model.ProductDTO;
 import MVCpatten.model.ProductDAO;
 import MVCpatten.view.AppMain;
 import MVCpatten.view.AppUIsetting;
@@ -20,7 +20,7 @@ public class AppBtnEvent implements ActionListener {
 	private AppMain appMain;
 	private AppUIsetting appUIset;
 	private ProductDAO productDAO;
-	private ArrayList<Product> firstAllProduct;
+	private ArrayList<ProductDTO> firstAllProduct;
 	private JButton[] jbtn = new JButton[3];
 	private Boolean IsCanRevise = false;
 	
@@ -51,7 +51,7 @@ public class AppBtnEvent implements ActionListener {
 				JTextField tempManu = (JTextField) this.appUIset.getbtnPanel(2).getComponent(3);
 				
 				// 해당하는 정보 기반으로 Produt 만들고 질의 던지기
-				Product p = new Product();
+				ProductDTO p = new ProductDTO();
 				p.setPrcode(findPrcode); // 찾은 Product의 prcode ( where 조건 )
 				p.setPrname(tempPname.getText());
 				p.setPrice(Integer.parseInt(tempPrice.getText()));
@@ -67,7 +67,7 @@ public class AppBtnEvent implements ActionListener {
 				JTextField tempPrice = (JTextField) this.appUIset.getbtnPanel(2).getComponent(2);
 				JTextField tempManu = (JTextField) this.appUIset.getbtnPanel(2).getComponent(3);
 				
-				Product p = new Product();
+				ProductDTO p = new ProductDTO();
 				p.setPrname(tempPname.getText());
 				p.setPrice(Integer.parseInt(tempPrice.getText()));
 				p.setManufacture(tempManu.getText());
@@ -121,7 +121,7 @@ public class AppBtnEvent implements ActionListener {
 			int findPrcode = Integer.parseInt((String) this.appUIset.getComboBox().getSelectedItem());
 			
 			// Getting Product from DB! 'key is prcode!' (in combo box)
-			Product Ptemp = this.productDAO.getProduct(findPrcode);
+			ProductDTO Ptemp = this.productDAO.getProduct(findPrcode);
 			String tempPrcode = String.valueOf(Ptemp.getPrcode());
 			String tempPrname =Ptemp.getPrname();
 			String tempPrice = String.valueOf(Ptemp.getPrice());

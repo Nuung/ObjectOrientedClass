@@ -48,12 +48,12 @@ public class ProductDAO {
 		
 	} // closeDB()
 	
-	public ArrayList<Product> getAll(){
+	public ArrayList<ProductDTO> getAll(){
 		this.connectDB();
 		this.SQL = "SELECT * FROM product"; // 모든 레코드 가져오기
 		
 		// 전체 검색 결과 전달 ArrayList 
-		ArrayList<Product> datas = new ArrayList<Product>();
+		ArrayList<ProductDTO> datas = new ArrayList<ProductDTO>();
 		
 		//관리번호 콤보박스 데이터를 위한 벡터 초기화 -> 'prcode' 의 string 값만 사용할 것
 		items = new Vector<String>();
@@ -66,7 +66,7 @@ public class ProductDAO {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				Product p = new Product();
+				ProductDTO p = new ProductDTO();
 				p.setPrcode(rs.getInt("prcode"));
 				p.setPrname(rs.getString("prname"));
 				p.setPrice(rs.getInt("price"));
@@ -87,10 +87,10 @@ public class ProductDAO {
 	} // getAll()
 	
 	// prcode -> comboBox에 넣어져 있고, 그에 해당하는 Product 가져오기
-	public Product getProduct(int prcode) {
+	public ProductDTO getProduct(int prcode) {
 		this.connectDB();
 		this.SQL = "SELECT * FROM `product` WHERE `prcode` = ?";
-		Product p = null;
+		ProductDTO p = null;
 		
 		try{
 			pstmt = conn.prepareStatement(this.SQL);
@@ -98,7 +98,7 @@ public class ProductDAO {
 			this.rs = pstmt.executeQuery();
 			// prcode는 Primary Key (기본키) -> 즉 유일함 -> first 값만 조지면 됨
 			rs.next();
-			p = new Product();
+			p = new ProductDTO();
 			p.setPrcode(rs.getInt("prcode"));
 			p.setPrname(rs.getString("prname"));
 			p.setPrice(rs.getInt("price"));
@@ -119,7 +119,7 @@ public class ProductDAO {
 	} // getProduct()
 	
 	// product 삽입하기
-	public boolean newProduct(Product product) {
+	public boolean newProduct(ProductDTO product) {
 		this.connectDB();
 		this.SQL = "INSERT INTO product VALUES(null, ?, ?, ?)";
 		
@@ -169,7 +169,7 @@ public class ProductDAO {
 	}
 	
 	// product 수정하기
-	public boolean updateProduct(Product product) {
+	public boolean updateProduct(ProductDTO product) {
 		this.connectDB();
 		this.SQL = "UPDATE `product` SET `prname`=?, `price`=?, `manufacture`=? WHERE `prcode` = ?";
 		try{

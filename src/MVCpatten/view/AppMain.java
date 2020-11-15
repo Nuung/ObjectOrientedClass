@@ -10,7 +10,7 @@ import javax.swing.JMenu;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import MVCpatten.model.Product;
+import MVCpatten.model.ProductDTO;
 import MVCpatten.model.ProductDAO;
 import MVCpatten.view.event.AppBtnEvent;
 
@@ -20,7 +20,7 @@ public class AppMain extends JFrame {
 	private final int WIDTH = 800, HEIGHT = 300;
 	private AppUIsetting appUIset;
 	private ProductDAO productDAO;
-	private ArrayList<Product> firstAllProduct = new ArrayList<Product>();
+	private ArrayList<ProductDTO> firstAllProduct = new ArrayList<ProductDTO>();
 	
 	public AppMain() {
 		this.productDAO = new ProductDAO();
