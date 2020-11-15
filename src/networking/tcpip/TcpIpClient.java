@@ -7,11 +7,11 @@ import java.net.Socket;
 public class TcpIpClient extends Thread{
 
 	private String socketip = "127.0.0.1";
-	private int socketport = 500;
+	private int socketport = 3001;
 	
 	private void RunningClient() {
 		try {
-//			Thread.sleep(1000);
+			Thread.sleep(1000);
 			
 			Socket s = new Socket(this.socketip, this.socketport);
 			System.out.println("## Working the Client...");

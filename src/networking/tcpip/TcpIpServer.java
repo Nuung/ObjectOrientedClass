@@ -11,7 +11,7 @@ public class TcpIpServer extends Thread {
 	// Socket Programming
 	private void RunningServer() {
 		try {
-			ServerSocket sc = new ServerSocket(5012);
+			ServerSocket sc = new ServerSocket(3001);
 			System.out.println("## Working the Server...");
 			
 			while (true) {
