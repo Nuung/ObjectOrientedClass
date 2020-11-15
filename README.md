@@ -97,11 +97,12 @@ step3) OOP ~ Track Management project!
 <div align = "center">
     전체 프로젝트 파일 구조 및 형태는 아래와 같습니다. </br>
     <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/multiChat_UML.png" width="90%" /></br>
-<div></br>
+</div></br>
 
 
 ------------
 
 
 ## Track Management Project 
+> 세부 사항은 아래 본 레포에서 확인해 주세요! 서버에 올리지 못한게 한이 되었던,,,,
 - [Go to Repo](https://github.com/Nuung/TrackManagment)
