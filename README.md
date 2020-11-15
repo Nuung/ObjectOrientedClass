@@ -1,5 +1,5 @@
 # ObjectOrientedClass
-> Code for ObjectOrientedClass in winter semester.
+> 2019.01) Code for ObjectOrientedClass in winter semester.
 
 - OOP 초점, 예제 부터 시작하고 MVC 패턴으로 프로젝트까지
 - 매주 실습 자료 (실 과제 자료 제외) 
