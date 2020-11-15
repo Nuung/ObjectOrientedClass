@@ -12,7 +12,9 @@
 - 자바 소켓 프로그래밍으로 멀티 채팅 서버 - 클라이언트 구조 구현화
 - 기반으로 만든 **Sejong Univ- 트랙 제도 이수 확인 프로그래밍** [Go to Repo](https://github.com/Nuung/TrackManagment)
 
+<div align = "center">
 [![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=Nuung&repo=TrackManagment&show_owner=true&theme=dark)](https://github.com/Nuung/TrackManagment) 
+</div>
 
 
 ``` 
