@@ -9,7 +9,7 @@
 <a href="https://github.com/Nuung/ObjectOrientedClass/projects/1"> Go To ' TO DO ' </a>
 
 <div align = "center">
-    <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/수업예제진행사진.png" width="60%" />
+    <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/수업예제진행사진.png" width="40%" />
 </div>
 
 *** 아래부터 대표 프로젝트 설명 ***
@@ -17,9 +17,7 @@
 ## Multi Chatting Program
 > 소켓 프로그래밍 + Thread / View / Server / Simple Model / Controller 분화로 가볍게 만든 멀티 채팅 프로그래밍
 
-[Gson](https://github.com/google/gson)
-
-``` Gson이라는 외부라이브러리로 String을 json으로 처리해서 메세지를 처리함! ```
+``` Gson이라는 외부라이브러리로 String을 json으로 처리해서 메세지를 처리함! ``` -> 참고 해 주세요 [Gson](https://github.com/google/gson)
 
 
 ### 시물레이션
@@ -33,8 +31,9 @@
 
 ### Project 구조
 <div align = "center">
-    - 전체 프로젝트 파일 구조 및 형태는 아래와 같습니다. 
-    <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/multiChat_img1.png" width="60%" />
-    - Controller 부분
+    전체 프로젝트 파일 구조 및 형태는 아래와 같습니다. 
+    <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/multiChat_img1.png" width="60%" /></br>
+    Controller 부분
     <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/multiChat_img2.png" width="60%" />
 </div>
+
