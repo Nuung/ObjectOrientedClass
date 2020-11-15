@@ -1,3 +1,9 @@
+<div align = "center">
+    <img src="https://img.shields.io/badge/license-MIT-green" />
+    <img src="https://img.shields.io/badge/Java%20version-%3E%3D%20SE%2011-blue" />
+    <img src="https://img.shields.io/badge/Requirements-gson%2C%20mysql-blue" />
+</div>
+
 # ObjectOrientedClass
 > 2019.01) Code for ObjectOrientedClass in winter semester.
 
@@ -5,6 +11,9 @@
 - 매주 실습 자료 (실 과제 자료 제외) 
 - 자바 소켓 프로그래밍으로 멀티 채팅 서버 - 클라이언트 구조 구현화
 - 기반으로 만든 **Sejong Univ- 트랙 제도 이수 확인 프로그래밍** [Go to Repo](https://github.com/Nuung/TrackManagment)
+
+[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=Nuung&repo=TrackManagment&show_owner=true&theme=dark)](https://github.com/Nuung/TrackManagment) 
+
 
 ``` 
 step1) 예제 -> Thread -> networking 부분으로 소켓까지
