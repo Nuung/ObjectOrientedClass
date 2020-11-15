@@ -6,7 +6,11 @@
 - 자바 소켓 프로그래밍으로 멀티 채팅 서버 - 클라이언트 구조 구현화
 - 기반으로 만든 **Sejong Univ- 트랙 제도 이수 확인 프로그래밍** [Go to Repo](https://github.com/Nuung/TrackManagment)
 
-``` 예제 -> Thread -> networking 부분으로 소켓까지 // MVC pattern project -> 멀티채팅, -> OOP Track Management project! ```
+``` 
+step1) 예제 -> Thread -> networking 부분으로 소켓까지
+step2) MVC pattern project -> 멀티채팅 
+step3) OOP ~ Track Management project! 
+```
 
 
 <div align = "center">
@@ -16,7 +20,7 @@
 
 
 ## MVC pattern Project
-> So simple example project for MVC pattern with JFrame (in FrontEnd)
+> So simple example project for MVC pattern with Swing (in FrontEnd)
 
 <div align = "center">
     <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/mvc_img1.png" width="60%" /></br>
@@ -93,13 +97,10 @@
 <div align = "center">
     전체 프로젝트 파일 구조 및 형태는 아래와 같습니다. </br>
     <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/multiChat_UML.png" width="90%" /></br>
-<div>
+<div></br>
 
-</br>
 
 ------------
-
-</br>
 
 
 ## Track Management Project 
