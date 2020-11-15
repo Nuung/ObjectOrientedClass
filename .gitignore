@@ -3,6 +3,8 @@
 # Edit at https://www.gitignore.io/?templates=java,windows,eclipse
 
 .idea
+.DS_Store
+.iml
 
 ### Eclipse ###
 
