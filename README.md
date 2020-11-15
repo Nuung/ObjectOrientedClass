@@ -13,7 +13,9 @@
 - 기반으로 만든 **Sejong Univ- 트랙 제도 이수 확인 프로그래밍** [Go to Repo](https://github.com/Nuung/TrackManagment)
 
 <div align = "center">
+    
 [![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=Nuung&repo=TrackManagment&show_owner=true&theme=dark)](https://github.com/Nuung/TrackManagment) 
+
 </div>
 
 
