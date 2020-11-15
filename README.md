@@ -1,15 +1,40 @@
-
 # ObjectOrientedClass
-Code for ObjectOrientedClass in winter semester.
+> Code for ObjectOrientedClass in winter semester.
 
-- 자바 소켓 프로그래밍으로 멀티 채팅 서버 - 클라이언트 구조 구현화
+- OOP 초점, 예제 부터 시작하고 MVC 패턴으로 프로젝트까지
 - 매주 실습 자료 (실 과제 자료 제외) 
-- <a href="https://github.com/Nuung/ObjectOrientedClass/tree/master/src"> About the Projects </a>
-- <a href="https://github.com/Nuung/ObjectOrientedClass/projects/1"> Go To ' TO DO ' </a>
+- 자바 소켓 프로그래밍으로 멀티 채팅 서버 - 클라이언트 구조 구현화
+- 기반으로 만든 **Sejong Univ- 트랙 제도 이수 확인 프로그래밍**
 
-## 기반으로 Track Management 개발
+<a href="https://github.com/Nuung/ObjectOrientedClass/projects/1"> Go To ' TO DO ' </a>
 
-- <a href="https://github.com/Nuung/TrackManagment"> Go to the Project </a>
-- UIS에서 엑셀 다운로드와 업로드만으로 세종대 학교 트랙 이수 여부, 트랙 이수하기 위해 필요한 과목과 이수한 코스 체크 가능
-- 외 자바 연습 퀴즈나 기본 로직 테스트 프로젝트 총 망라
-- 고급 프로그래밍, 함수형 프로그래밍 포함 예정
+<div align = "center">
+    <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/수업예제진행사진.png" width="60%" />
+</div>
+
+*** 아래부터 대표 프로젝트 설명 ***
+
+## Multi Chatting Program
+> 소켓 프로그래밍 + Thread / View / Server / Simple Model / Controller 분화로 가볍게 만든 멀티 채팅 프로그래밍
+
+[Gson](https://github.com/google/gson)
+
+``` Gson이라는 외부라이브러리로 String을 json으로 처리해서 메세지를 처리함! ```
+
+
+### 시물레이션
+<div align = "center">
+    <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/multiChat_img3.png" width="60%" />
+    <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/multiChat_img4.png" width="60%" />
+    <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/multiChat_img5.png" width="60%" />
+    <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/multiChat_img6.png" width="60%" />
+</div>
+
+
+### Project 구조
+<div align = "center">
+    - 전체 프로젝트 파일 구조 및 형태는 아래와 같습니다. 
+    <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/multiChat_img1.png" width="60%" />
+    - Controller 부분
+    <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/multiChat_img2.png" width="60%" />
+</div>
