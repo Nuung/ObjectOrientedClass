@@ -4,9 +4,9 @@
 - OOP 초점, 예제 부터 시작하고 MVC 패턴으로 프로젝트까지
 - 매주 실습 자료 (실 과제 자료 제외) 
 - 자바 소켓 프로그래밍으로 멀티 채팅 서버 - 클라이언트 구조 구현화
-- 기반으로 만든 **Sejong Univ- 트랙 제도 이수 확인 프로그래밍**
+- 기반으로 만든 **Sejong Univ- 트랙 제도 이수 확인 프로그래밍** [Go to Repo](https://github.com/Nuung/TrackManagment)
 
-``` 예제 -> Thread -> networking 부분으로 소켓까지 // MVC -> 멀티채팅까지 ```
+``` 예제 -> Thread -> networking 부분으로 소켓까지 // MVC pattern project -> 멀티채팅, -> OOP Track Management project! ```
 
 
 <div align = "center">
@@ -14,6 +14,38 @@
     <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/수업예제진행사진.png" width="40%" />
 </div>
 
+
+## MVC pattern Project
+> So simple example project for MVC pattern with JFrame (in FrontEnd)
+
+- 정말 가볍게 jdbc(mysql db)를 사용하고 Model(DAT, DTO) - View(with Jframe, Swing) - Event(controller) 로 이뤄진 특정 단일 data object CRUD가능한 프로그램이다. 바로 실행하기 위해 아래 스키마를 등록해야한다! 당연히 mysql lib을 build path에도 등록해야하고! 
+    ~~~~sql
+
+    CREATE DATABASE IF NOT EXISTS javadb CHARACTER SET utf8 COLLATE utf8_general_ci;  
+    use javadb;
+    DROP TABLE IF EXISTS product;
+    CREATE TABLE product (
+        prcode  	  INTEGER auto_increment PRIMARY KEY, 
+        prname 	      VARCHAR(100) NOT NULL, 
+        price		  INTEGER NOT NULL,
+        manufacture   VARCHAR(100) NOT NULL
+    );
+
+    ~~~~
+
+### Class 구조 - UML
+- MVC pattern에 대한 아키텍쳐를 아주 심플하게 맛볼 수 있는 uml 형태
+
+<div align = "center">
+    AppMain Class - (ui setting 포함) 이 "View" 역할 / AppBtnEvent가 "Controller" 역할 / Model에 포함되는 애들이 DTO DAO (외 config)</br>
+    <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/mvcpattenUML.PNG" width="80%" />
+</div>
+
+</br>
+
+------------
+
+</br>
 
 ## Multi Chatting Program
 > 소켓 프로그래밍 + Thread / View / Server / Simple Model / Controller 분화로 가볍게 만든 멀티 채팅 프로그래밍
@@ -59,3 +91,13 @@
     전체 프로젝트 파일 구조 및 형태는 아래와 같습니다. </br>
     <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/multiChat_UML.png" width="90%" /></br>
 <div>
+
+</br>
+
+------------
+
+</br>
+
+
+## Track Management Project 
+- [Go to Repo](https://github.com/Nuung/TrackManagment)
