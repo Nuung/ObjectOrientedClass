@@ -18,9 +18,12 @@
 ## MVC pattern Project
 > So simple example project for MVC pattern with JFrame (in FrontEnd)
 
-- 정말 가볍게 jdbc(mysql db)를 사용하고 Model(DAT, DTO) - View(with Jframe, Swing) - Event(controller) 로 이뤄진 특정 단일 data object CRUD가능한 프로그램이다. 바로 실행하기 위해 아래 스키마를 등록해야한다! 당연히 mysql lib을 build path에도 등록해야하고! 
-    ~~~~sql
+<div align = "center">
+    <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/mvc_img1.png" width="60%" /></br>
+</div></br>
 
+- 정말 가볍게 jdbc(mysql db)를 사용하고 Model(DAT, DTO) - View(with Jframe, Swing) - Event(controller) 로 이뤄진 특정 단일 **data object CRUD**가능한 프로그램이다. 바로 실행하기 위해 아래 스키마를 등록해야한다! 당연히 mysql lib을 build path에도 등록해야하고! 
+    ~~~~sql
     CREATE DATABASE IF NOT EXISTS javadb CHARACTER SET utf8 COLLATE utf8_general_ci;  
     use javadb;
     DROP TABLE IF EXISTS product;
@@ -30,14 +33,14 @@
         price		  INTEGER NOT NULL,
         manufacture   VARCHAR(100) NOT NULL
     );
-
     ~~~~
 
 ### Class 구조 - UML
 - MVC pattern에 대한 아키텍쳐를 아주 심플하게 맛볼 수 있는 uml 형태
 
 <div align = "center">
-    AppMain Class - (ui setting 포함) 이 "View" 역할 / AppBtnEvent가 "Controller" 역할 / Model에 포함되는 애들이 DTO DAO (외 config)</br>
+    AppMain Class - (ui setting 포함) 이 "View" 역할 </br>
+    AppBtnEvent가 "Controller" 역할 / Model에 포함되는 애들이 DTO DAO (외 config)</br>
     <img src="https://github.com/Nuung/ObjectOrientedClass/blob/master/images/mvcpattenUML.PNG" width="80%" />
 </div>
 
